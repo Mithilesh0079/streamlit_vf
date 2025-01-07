@@ -1229,8 +1229,9 @@ with tab2:
                 consolidated_df = consolidated_df.drop(columns=['GROUP'])
             else:  # Customer Level
                 consolidated_df = consolidated_df.rename(columns={'GROUP': 'Customer'})
-                        
-            st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
+                
+            print(consolidated_df.head())     
+            # st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
 
 
             # Download consolidated shipments as CSV
