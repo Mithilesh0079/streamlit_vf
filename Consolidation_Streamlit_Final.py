@@ -129,11 +129,7 @@ else:
         end_date = pd.Timestamp(year=year, month=selected_month_number + 1, day=1) - pd.Timedelta(seconds=1)
 
 # Filter data based on selected date range
-print(df.shape)
 df = df[(df['SHIPPED_DATE'] >= start_date) & (df['SHIPPED_DATE'] <= end_date)]
-
-print(start_date, end_date)
-print(df.shape)
 
 # Add checkbox and conditional dropdown for selecting post codes or customers
 if group_method == 'Post Code Level':
@@ -1229,10 +1225,8 @@ with tab2:
                 consolidated_df = consolidated_df.drop(columns=['GROUP'])
             else:  # Customer Level
                 consolidated_df = consolidated_df.rename(columns={'GROUP': 'Customer'})
-                
-            print(consolidated_df.head())     
+                  
             st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
-
 
             # Download consolidated shipments as CSV
             csv = consolidated_df.to_csv(index=False)
