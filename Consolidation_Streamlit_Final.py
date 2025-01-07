@@ -1231,7 +1231,7 @@ with tab2:
                 consolidated_df = consolidated_df.rename(columns={'GROUP': 'Customer'})
                 
             print(consolidated_df.head())     
-            # st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
+            st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
 
 
             # Download consolidated shipments as CSV
