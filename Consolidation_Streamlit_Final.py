@@ -1226,8 +1226,12 @@ with tab2:
             else:  # Customer Level
                 consolidated_df = consolidated_df.rename(columns={'GROUP': 'Customer'})
                  
-            print(consolidated_df.isnull().sum())
- 
+            for col in consolidated_df.columns:
+                if consolidated_df[col].dtype == 'object':
+                    consolidated_df[col] = consolidated_df[col].astype(str)
+            consolidated_df['Date'] = pd.to_datetime(consolidated_df['Date'], errors='coerce')
+            
+         
             st.dataframe(consolidated_df.reset_index(drop=True).set_index('Date'))
 
             # Download consolidated shipments as CSV
